@@ -77,6 +77,18 @@
           }
         }
       },
+      "BarcodeLib/2.2.6": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "4.5.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/BarcodeStandard.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/BarcodeStandard.dll": {}
+        }
+      },
       "BouncyCastle.Cryptography/2.3.1": {
         "type": "package",
         "compile": {
@@ -2240,15 +2252,13 @@
           "lib/netstandard2.0/Savage.OptimizedDataReader.dll": {}
         }
       },
-      "QRCoder/1.1.5": {
+      "QRCoder/1.4.3": {
         "type": "package",
         "compile": {
-          "lib/net40/QRCoder.dll": {},
-          "lib/net40/UnityEngine.dll": {}
+          "lib/net6.0/QRCoder.dll": {}
         },
         "runtime": {
-          "lib/net40/QRCoder.dll": {},
-          "lib/net40/UnityEngine.dll": {}
+          "lib/net6.0/QRCoder.dll": {}
         }
       },
       "ReportViewerCore.NETCore/15.1.24": {
@@ -4370,7 +4380,7 @@
           "lib/net6.0/ZstdSharp.dll": {}
         }
       },
-      "ZXing.Net/0.16.9": {
+      "ZXing.Net/0.16.10": {
         "type": "package",
         "compile": {
           "lib/net6.0/zxing.dll": {
@@ -4474,6 +4484,19 @@
         "lib/net6.0/Azure.Core.xml",
         "lib/netstandard2.0/Azure.Core.dll",
         "lib/netstandard2.0/Azure.Core.xml"
+      ]
+    },
+    "BarcodeLib/2.2.6": {
+      "sha512": "BkzudXISPatarIgr6yaCkGh60s/Xb4Hz8oFlXINBVKJVl8F//qtEJ3ex5Q8T29w/kr82ST/3nn5r+TIrrDkBAg==",
+      "type": "package",
+      "path": "barcodelib/2.2.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "barcodelib.2.2.6.nupkg.sha512",
+        "barcodelib.nuspec",
+        "lib/netstandard2.0/BarcodeStandard.dll"
       ]
     },
     "BouncyCastle.Cryptography/2.3.1": {
@@ -7596,16 +7619,24 @@
         "optimizeddatareader.nuspec"
       ]
     },
-    "QRCoder/1.1.5": {
-      "sha512": "KytgDx2K5kYet2Qvvx61A8xvSjQRU3R7zChZbjEmVUCWeijEyGgeb2RfPhilmpRT6hr12xPrW7V1YW/+NX7grQ==",
+    "QRCoder/1.4.3": {
+      "sha512": "fWuFqjm8GTlEb2GqBl3Hi8HZZeZQwBSHxvRPtPjyNbT82H0ff0JwavKRBmMaXCno1Av6McPC8aJzri0Mj2w9Jw==",
       "type": "package",
-      "path": "qrcoder/1.1.5",
+      "path": "qrcoder/1.4.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "lib/net35/QRCoder.dll",
         "lib/net40/QRCoder.dll",
-        "lib/net40/UnityEngine.dll",
-        "qrcoder.1.1.5.nupkg.sha512",
+        "lib/net5.0-windows7.0/QRCoder.dll",
+        "lib/net5.0/QRCoder.dll",
+        "lib/net6.0-windows7.0/QRCoder.dll",
+        "lib/net6.0/QRCoder.dll",
+        "lib/netstandard1.3/QRCoder.dll",
+        "lib/netstandard2.0/QRCoder.dll",
+        "nuget-icon.png",
+        "nuget-readme.md",
+        "qrcoder.1.4.3.nupkg.sha512",
         "qrcoder.nuspec"
       ]
     },
@@ -12405,10 +12436,10 @@
         "zstdsharp.port.nuspec"
       ]
     },
-    "ZXing.Net/0.16.9": {
-      "sha512": "7WaVMHklpT3Ye2ragqRIwlFRsb6kOk63BOGADV0fan3ulVfGLUYkDi5yNUsZS/7FVNkWbtHAlDLmu4WnHGfqvQ==",
+    "ZXing.Net/0.16.10": {
+      "sha512": "9avtcn21T7Ndcl8PQ1LHR7/wEoCruX1QKKHvO6zBPTsDW9IdvR5vKOmd618AY+DtDWZz8NaFDTkpbZdgaF4l4w==",
       "type": "package",
-      "path": "zxing.net/0.16.9",
+      "path": "zxing.net/0.16.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -12449,6 +12480,10 @@
         "lib/net6.0/zxing.dll",
         "lib/net7.0/zxing.XML",
         "lib/net7.0/zxing.dll",
+        "lib/net8.0/zxing.XML",
+        "lib/net8.0/zxing.dll",
+        "lib/net9.0/zxing.XML",
+        "lib/net9.0/zxing.dll",
         "lib/netcoreapp3.0/zxing.dll",
         "lib/netcoreapp3.0/zxing.xml",
         "lib/netcoreapp3.1/zxing.dll",
@@ -12484,7 +12519,7 @@
         "lib/wp8/zxing.wp8.0.XML",
         "lib/wp8/zxing.wp8.0.dll",
         "logo.jpg",
-        "zxing.net.0.16.9.nupkg.sha512",
+        "zxing.net.0.16.10.nupkg.sha512",
         "zxing.net.nuspec"
       ]
     }
@@ -12493,16 +12528,17 @@
     "net6.0": [
       "AWSSDK.Core >= 3.3.0",
       "AWSSDK.S3 >= 3.3.0",
+      "BarcodeLib >= 2.2.6",
       "InTheHand.Net.Bluetooth >= 4.1.44",
       "Microsoft.Graph >= 5.68.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.17",
       "MySql.Data >= 9.0.0",
       "MySqlClient >= 5.5.2",
-      "QRCoder >= 1.1.5",
+      "QRCoder >= 1.4.3",
       "ReportViewerCore.NETCore >= 15.1.24",
       "System.Data.SqlClient >= 4.8.6",
       "System.Drawing.Common >= 8.0.0",
-      "ZXing.Net >= 0.16.9",
+      "ZXing.Net >= 0.16.10",
       "Zen.Barcode.Core >= 2.0.0"
     ]
   },
@@ -12565,6 +12601,10 @@
             "target": "Package",
             "version": "[3.3.0, )"
           },
+          "BarcodeLib": {
+            "target": "Package",
+            "version": "[2.2.6, )"
+          },
           "InTheHand.Net.Bluetooth": {
             "target": "Package",
             "version": "[4.1.44, )"
@@ -12587,7 +12627,7 @@
           },
           "QRCoder": {
             "target": "Package",
-            "version": "[1.1.5, )"
+            "version": "[1.4.3, )"
           },
           "ReportViewerCore.NETCore": {
             "target": "Package",
@@ -12603,7 +12643,7 @@
           },
           "ZXing.Net": {
             "target": "Package",
-            "version": "[0.16.9, )"
+            "version": "[0.16.10, )"
           },
           "Zen.Barcode.Core": {
             "target": "Package",
@@ -12634,16 +12674,6 @@
     }
   },
   "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'QRCoder 1.1.5' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "QRCoder",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
     {
       "code": "NU1701",
       "level": "Warning",

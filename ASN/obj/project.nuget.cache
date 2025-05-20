@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "MFWbo9+aEWI=",
+  "dgSpecHash": "Ty6I16D8kxo=",
   "success": true,
   "projectFilePath": "D:\\TaskTracker\\ASN\\ASN\\ASN.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\raghu\\.nuget\\packages\\awssdk.core\\3.3.0\\awssdk.core.3.3.0.nupkg.sha512",
     "C:\\Users\\raghu\\.nuget\\packages\\awssdk.s3\\3.3.0\\awssdk.s3.3.3.0.nupkg.sha512",
     "C:\\Users\\raghu\\.nuget\\packages\\azure.core\\1.44.1\\azure.core.1.44.1.nupkg.sha512",
+    "C:\\Users\\raghu\\.nuget\\packages\\barcodelib\\2.2.6\\barcodelib.2.2.6.nupkg.sha512",
     "C:\\Users\\raghu\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "C:\\Users\\raghu\\.nuget\\packages\\google.protobuf\\3.26.1\\google.protobuf.3.26.1.nupkg.sha512",
     "C:\\Users\\raghu\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
@@ -132,7 +133,7 @@
     "C:\\Users\\raghu\\.nuget\\packages\\nuget.protocol\\6.9.1\\nuget.protocol.6.9.1.nupkg.sha512",
     "C:\\Users\\raghu\\.nuget\\packages\\nuget.versioning\\6.9.1\\nuget.versioning.6.9.1.nupkg.sha512",
     "C:\\Users\\raghu\\.nuget\\packages\\optimizeddatareader\\1.1.2\\optimizeddatareader.1.1.2.nupkg.sha512",
-    "C:\\Users\\raghu\\.nuget\\packages\\qrcoder\\1.1.5\\qrcoder.1.1.5.nupkg.sha512",
+    "C:\\Users\\raghu\\.nuget\\packages\\qrcoder\\1.4.3\\qrcoder.1.4.3.nupkg.sha512",
     "C:\\Users\\raghu\\.nuget\\packages\\reportviewercore.netcore\\15.1.24\\reportviewercore.netcore.15.1.24.nupkg.sha512",
     "C:\\Users\\raghu\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\raghu\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -253,19 +254,9 @@
     "C:\\Users\\raghu\\.nuget\\packages\\tmds.dbus\\0.15.0\\tmds.dbus.0.15.0.nupkg.sha512",
     "C:\\Users\\raghu\\.nuget\\packages\\zen.barcode.core\\2.0.0\\zen.barcode.core.2.0.0.nupkg.sha512",
     "C:\\Users\\raghu\\.nuget\\packages\\zstdsharp.port\\0.8.0\\zstdsharp.port.0.8.0.nupkg.sha512",
-    "C:\\Users\\raghu\\.nuget\\packages\\zxing.net\\0.16.9\\zxing.net.0.16.9.nupkg.sha512"
+    "C:\\Users\\raghu\\.nuget\\packages\\zxing.net\\0.16.10\\zxing.net.0.16.10.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'QRCoder 1.1.5' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "QRCoder",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
     {
       "code": "NU1701",
       "level": "Warning",

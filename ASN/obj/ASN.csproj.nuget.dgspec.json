@@ -59,6 +59,10 @@
               "target": "Package",
               "version": "[3.3.0, )"
             },
+            "BarcodeLib": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
             "InTheHand.Net.Bluetooth": {
               "target": "Package",
               "version": "[4.1.44, )"
@@ -81,7 +85,7 @@
             },
             "QRCoder": {
               "target": "Package",
-              "version": "[1.1.5, )"
+              "version": "[1.4.3, )"
             },
             "ReportViewerCore.NETCore": {
               "target": "Package",
@@ -97,7 +101,7 @@
             },
             "ZXing.Net": {
               "target": "Package",
-              "version": "[0.16.9, )"
+              "version": "[0.16.10, )"
             },
             "Zen.Barcode.Core": {
               "target": "Package",
