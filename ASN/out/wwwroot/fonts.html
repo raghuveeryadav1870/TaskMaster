@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="loading" lang="en">
+ 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  
+    <!--<title>ASN</title>-->
+    <!--<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">-->
+    <!--<link rel="apple-touch-icon" href="images/logo/">-->
+    <link rel="shortcut icon" type="image/x-icon" href="images/ico/favicon-32.png">
+  
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="vendors/css/vendors.min.css">  
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">    
+    
+    <link rel="stylesheet" type="text/css" href="fonts/meteocons/style.min.css">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+       <link rel="stylesheet" type="text/css" href="css/quantumbso.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-extended.min.css">
+    <link rel="stylesheet" type="text/css" href="css/colors.min.css">
+    <link rel="stylesheet" type="text/css" href="css/components.min.css">
+
+
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="css/core/menu/menu-types/vertical-menu.min.css">
+    <link rel="stylesheet" type="text/css" href="css/core/colors/palette-gradient.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/simple-line-icons/style.min.css">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- END: Custom CSS-->
+
+  </head>
+  <!-- END: Head-->
+
+  <!-- BEGIN: Body-->
+  <body class="vertical-layout red-band vertical-menu 2-columns   fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="2-columns">
+
+    <div class="brand-band">
+    <img src="../images/color-band.png" alt="">
+  </div>
+
+    <!-- BEGIN: Header-->
+    <nav class="header-navbar navbar-expand-md navbar navbar-with-menu fixed-top navbar-semi-dark">
+      <div class="navbar-wrapper">
+          <div class="navbar-header">
+             
+              <ul class="nav navbar-nav flex-row">
+                  <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="fa fa-bars font-large-1"></i></a></li>
+                  <li class="nav-item">
+                      <a class="navbar-brand" href="index.html">
+                          <img class="brand-logo" alt="stack admin logo" src="../images/logo/k2d2.jpg">
+                          <!-- <h2 class="brand-text"><img src="images/logo/gsm-logo.svg" alt=""></h2> -->
+                      </a>
+                  </li>
+                  <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse" data-target="#navbar-mobile"><i class="fa fa-ellipsis-v"></i></a></li>
+              </ul>
+          </div>
+        <div class="navbar-container content">
+          <div class="collapse navbar-collapse" id="navbar-mobile">
+            <ul class="nav navbar-nav mr-auto float-left">
+              <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="fa fa-bars"></i></a></li>
+                      
+             
+            </ul>
+            <ul class="nav navbar-nav float-right">
+               <li class="nav-item nav-search"><a class="nav-link nav-link-search nav-link-label" href="#"><i class="qgsm-search"></i></a>
+                <div class="search-input">
+                  <input class="input" type="text" placeholder="Explore Stack..." tabindex="0" data-search="template-search">
+                  <div class="search-input-close"><i class="fa fa-close"></i></div>
+                  <ul class="search-list"></ul>
+                </div>
+              </li>
+                         <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="qgsm-notifications"></i></a>
+                <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                  <li class="dropdown-menu-header">
+                    <h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span><span class="notification-tag badge badge-danger float-right m-0">5 New</span></h6>
+                  </li>
+                  <li class="scrollable-container media-list"><a href="javascript:void(0)">
+                      <div class="media">
+                           <div class="media-body">
+                          <h6 class="media-heading">Notifications</h6>
+                          <p class="notification-text font-small-3 text-muted">Lorem ipsum dolor sit amet, consectetuer elit.</p><small>
+                            </small>
+                        </div>
+                      </div></a><a href="javascript:void(0)">
+                      <div class="media">
+                        
+                        <div class="media-body">
+                          <h6 class="media-heading red darken-1">Notifications</h6>
+                          <p class="notification-text font-small-3 text-muted">Aliquam tincidunt mauris eu risus.</p>
+                        </div>
+                      </div></a><a href="javascript:void(0)">
+                      <div class="media">                        
+                        <div class="media-body">
+                          <h6 class="media-heading yellow darken-3">Warning notifixation</h6>
+                          <p class="notification-text font-small-3 text-muted">Vestibulum auctor dapibus neque.</p>
+                        </div>
+                      </div></a><a href="javascript:void(0)">
+                      </a></li>
+                  <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all notifications</a></li>
+                </ul>
+              </li>
+
+
+              <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="qgsm-email"></i></a>
+                <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                  <li class="dropdown-menu-header">
+                    <h6 class="dropdown-header m-0"><span class="grey darken-2">Messages</span><span class="notification-tag badge badge-warning float-right m-0">4 New</span></h6>
+                  </li>
+                  <li class="scrollable-container media-list"><a href="javascript:void(0)">
+                      <div class="media">
+                        <div class="media-left">
+                          <div class="avatar avatar-online avatar-sm rounded-circle"><img src="../images/portrait/small/avatar-s-1.png" alt="avatar"><i></i></div>
+                        </div>
+                        <div class="media-body">
+                          <h6 class="media-heading">Margaret Govan</h6>
+                          <p class="notification-text font-small-3 text-muted">I like your portfolio, let's start.</p><small>
+                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Today</time></small>
+                        </div>
+                      </div></a><a href="javascript:void(0)">
+                      <div class="media">
+                        <div class="media-left"><span class="avatar avatar-sm avatar-busy rounded-circle"><img src="../images/portrait/small/avatar-s-2.png" alt="avatar"><i></i></span></div>
+                        <div class="media-body">
+                          <h6 class="media-heading">Bret Lezama</h6>
+                          <p class="notification-text font-small-3 text-muted">I have seen your work, there is</p><small>
+                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Tuesday</time></small>
+                        </div>
+                      </div></a><a href="javascript:void(0)">
+                      <div class="media">
+                        <div class="media-left">
+                          <div class="avatar avatar-online avatar-sm rounded-circle"><img src="../images/portrait/small/avatar-s-3.png" alt="avatar"><i></i></div>
+                        </div>
+                        <div class="media-body">
+                          <h6 class="media-heading">Carie Berra</h6>
+                          <p class="notification-text font-small-3 text-muted">Can we have call in this week ?</p><small>
+                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Friday</time></small>
+                        </div>
+                      </div></a><a href="javascript:void(0)">
+                      <div class="media">
+                        <div class="media-left"><span class="avatar avatar-sm avatar-away rounded-circle"><img src="../images/portrait/small/avatar-s-6.png" alt="avatar"><i></i></span></div>
+                        <div class="media-body">
+                          <h6 class="media-heading">Eric Alsobrook</h6>
+                          <p class="notification-text font-small-3 text-muted">We have project party this saturday.</p><small>
+                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">last month</time></small>
+                        </div>
+                      </div></a></li>
+                  <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all messages</a></li>
+                </ul>
+              </li>
+
+             
+
+              <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="qgsm-reports"></i></a>
+                
+              </li>
+
+               <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="qgsm-glossary"></i></a>
+                
+              </li>
+                <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="login.html"><i class="qgsm-logout"></i></a>
+                
+              </li>
+            
+              <li class="nav-item"><a class="nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                  <div class="avatar avatar-online"><img src="../images/portrait/small/avatar-s-1.png" alt="avatar"></div></a>
+                
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- END: Header-->
+
+
+    <!-- BEGIN: Main Menu-->
+    <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+      <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li class=" nav-item"><a href="index.html"><i class="fa fa-tachometer"></i><span class="menu-title">Dashboard</span></a>
+            
+          </li>
+          <li class=" nav-item"><a href="#"><i class="fa fa-ticket"></i><span class="menu-title" data-i18n="Templates">Ticket</span></a>
+            
+          </li>
+          <li class=" nav-item"><a href="#"><i class="fa fa-file"></i><span class="menu-title">Report</span></a>
+            <ul class="menu-content">
+              <li><a class="menu-item" href="#">Report 1</a></li>
+              <li><a class="menu-item" href="#">Report 1</a></li>
+              <li><a class="menu-item" href="#">Report 1</a></li>
+              
+            </ul>
+          </li>
+          <li class="nav-item"><a href="#"><i class="fa fa-cog"></i><span class="menu-title">Setting</span></a> 
+
+          <ul class="menu-content">
+              <li><a class="menu-item" href="company-list.html">Company Profile (QBSO)</a></li>
+              <li><a class="menu-item" href="product-list.html">Product</a></li>
+              <li><a class="menu-item" href="user-list.html">User Management</a></li>
+              <li><a class="menu-item" href="customer-master.html">Customer</a></li>
+              <li><a class="menu-item" href="document.html">Document</a></li>
+<li><a class="menu-item" href="workflow.html">WorkFlow</a></li>
+<li><a class="menu-item" href="escalation.html">Escalation</a></li>
+              
+            </ul>           
+          </li>
+
+          <li class="nav-item"><a href="#"><i class="fa fa-cogs"></i><span class="menu-title">Components</span></a> 
+
+          <ul class="menu-content">
+              <li><a class="menu-item" href="fonts.html">Fonts</a></li>
+              <li><a class="menu-item" href="color.html">Color</a></li>
+              <li><a class="menu-item" href="buttons.html">Buttons</a></li>
+              <li><a class="menu-item" href="input.html">Input Field </a></li>
+              <li><a class="menu-item" href="popup.html">Popup</a></li>
+              
+            </ul>           
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+    <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+      <div class="content-overlay"></div>
+      <div class="content-wrapper">
+        <a class="menu-toggle collapses-btn hidden-xs" href="#"><i data-toggle="tooltip" title="Expand side panel" data-offset="50%, 3" class="fa fa-caret-right font-large-1"></i> <i data-toggle="tooltip" title="Collapse side panel" data-offset="50%, 3" class="fa fa-caret-left font-large-1"></i></a>
+        <a class="menu-toggle collapses-btn hidden-xs" href="#"><i data-toggle="tooltip" title="Expand side panel" data-offset="50%, 3" class="fa fa-caret-right font-large-1"></i> <i data-toggle="tooltip" title="Collapse side panel" data-offset="50%, 3" class="fa fa-caret-left font-large-1"></i></a>
+        
+        <div class="">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="fonts-heading">
+                <strong>Headings</strong>
+                <div class="hd-rw">
+                  <span>H 1</span>
+                  <h1 class="primerycolor">Exo 2 /Bold /32px /32px /0% /Original</h1>
+                </div>
+
+                <div class="hd-rw">
+                  <span>H 2</span>
+                  <h2 class="primerycolor">Exo 2 /Bold /24px /24px /0% /Original</h2>
+                </div>
+
+                <div class="hd-rw">
+                  <span>H 3</span>
+                  <h3 class="primerycolor">EXO 2 /BOLD /16PX /24PX /4% /UPPER</h3>
+                </div>
+
+                <div class="hd-rw">
+                  <span>H 4</span>
+                  <h4 class="primerycolor">EXO 2 /BOLD /14PX /16PX /6% /UPPER</h4>
+                </div>
+
+                <div class="hd-rw">
+                  <span>H 5</span>
+                  <h5 class="primerycolor">EXO 2 /BOLD /12PX /16PX /6% /UPPER</h5>
+                </div>
+
+                <div class="hd-rw">
+                  <span>H 6</span>
+                  <h6 class="primerycolor">EXO 2 /BOLD /10PX /16PX /6% /UPPER</h6>
+                </div>
+              </div>
+
+              <div class="fonts-heading">
+                <strong>Body</strong>
+                <div class="hd-rw">
+                  <span>Body Medium</span>
+                  <p class="fw500 fs20 primerycolor">Exo 2 /Semi Bold /16px /24px /0% /Original</p>
+                </div>
+
+                <div class="hd-rw">
+                  <span>Body Regular</span>
+                  <p class="fw400 fs18 primerycolor">Exo 2 /Semi Bold /16px /24px /0% /Original</p>
+                </div>
+
+                <div class="hd-rw">
+                  <span>Body Lght</span>
+                  <p class="fw300 fs16 primerycolor">Exo 2 /Semi Bold /16px /24px /0% /Original</p>
+                </div>
+
+                <div class="hd-rw">
+                  <span>Body Extra Lght </span>
+                  <p class="fw300 fs14 primerycolor">Exo 2 /Regular /14px /24px /0% /Original</p>
+                </div>
+
+                <div class="fonts-heading">
+                <strong>FORM ELEMENTS</strong>
+                <div class="hd-rw">
+                  <span>Button</span>
+                  <p class="fw500 fs20 primerycolor">Exo 2 /Semi Bold /16px /24px /0% /Original</p>
+                </div>
+
+                <div class="hd-rw">
+                  <span>Label</span>
+                  <p class="fw400 fs16 primerycolor">Exo 2 /Semi Bold /13px /16px /0% /Original</p>
+                </div>
+
+                <div class="hd-rw">
+                  <span>Input</span>
+                  <p class="fw400 fs14 primerycolor">Exo 2 /Regular /14px /24px /0% /Original</p>
+                </div>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+              </div>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+
+    
+    <!-- BEGIN: Footer-->
+    
+
+<footer class="footer fixed-bottom custom-footer footer-dark navbar-border">
+      <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span class="float-md-left d-block d-md-inline-block">Copyright 2023 Quantum BSO and Tech Pvt. Ltd </span></p>
+
+      <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><a href="#">Privacy Policy</a></p>
+    </footer>
+    <!-- END: Footer-->
+
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="vendors/js/vendors.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+
+
+
+    <!-- BEGIN: Theme JS-->
+    <script src="js/core/app-menu.min.js"></script>
+    <script src="js/core/app.min.js"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+   
+    <!-- END: Page JS-->
+
+  </body>
+  <!-- END: Body-->
+
+</html>
