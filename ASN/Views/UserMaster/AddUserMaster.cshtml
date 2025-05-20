@@ -1,0 +1,182 @@
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration _sconfiguration
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "AddUserMaster";
+    ViewData["breadcrumtitle"] = "Add User";
+}
+@using ASN.Models
+@model UserMasterModel
+
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        @* <a class="menu-toggle collapses-btn hidden-xs" href="#"><i data-toggle="tooltip" title="" data-offset="50%, 3" class="fa fa-caret-right font-large-1" data-original-title="Expand side panel"></i> <i data-toggle="tooltip" title="" data-offset="50%, 3" class="fa fa-caret-left font-large-1" data-original-title="Collapse side panel"></i></a> *@
+
+        <form id="parkingForm">
+            <div class="document-edit-bar">
+                <div class="row edit-documents">
+                    <input type="hidden" id="UserID" name="UserID" value="@Model.UserID" />
+
+                    <div class="col-md-4">
+                        <div class="simple-type-text">
+                            @Html.TextBoxFor(Model => Model.UserName, new { @class = "input-simple"})
+                            @* <input class="input-simple" type="text" name="AuthorityName" id="authorityname" value="@Model.AuthorityName" /> *@
+                            <label for="UserName" class="simple-label">User Name</label>
+                            <label class="Field-Req Field-ReqColor" id="UserNameR">User Name Is Required</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="simple-type-text">
+                            @Html.TextBoxFor(Model => Model.UserEmail, new { @class = "input-simple"})
+                            @* <input class="input-simple" type="text" name="AuthorityCode" id="authoritycode" value="@Model.AuthorityCode" /> *@
+                            <label for="UserEmail" class="simple-label">User Email</label>
+                            <label class="Field-Req Field-ReqColor" id="UserEmailR">User Email Is Required</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="simple-type-text">
+                            @Html.TextBoxFor(Model => Model.UserPassword, new { @class = "input-simple"})
+                            @* <input class="input-simple" type="text" name="AuthorityCode" id="authoritycode" value="@Model.AuthorityCode" /> *@
+                            <label for="UserPassword" class="simple-label">User Password</label>
+                            <label class="Field-Req Field-ReqColor" id="UserPasswordR">User Password Is Required</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="simple-type-text">
+                            @Html.TextBoxFor(Model => Model.UserPhone, new { @class = "input-simple" ,@maxlength="10"})
+                            @* <input class="input-simple" type="text" name="AuthorityCode" id="authoritycode" value="@Model.AuthorityCode" /> *@
+                            <label for="UserPhone" class="simple-label">User Phone</label>
+                            <label class="Field-Req Field-ReqColor" id="UserPhoneR">User Phone Is Required</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="simple-type-text">
+                            @Html.DropDownListFor(Model => Model.UserType, Model.Profilelst, new { @class = "input-simple" })
+                            @* <input class="input-simple" type="text" name="AuthorityCode" id="authoritycode" value="@Model.AuthorityCode" /> *@
+                            <label for="User Type" class="simple-label">User Type</label>
+                            <label class="Field-Req Field-ReqColor" id="UserTypeR">User Type Is Required</label>
+                        </div>
+                    </div>
+                     
+                </div>
+
+                <div class="document-footer stepper-close-btn">
+                    @Html.HiddenFor(m => m.UserID)
+                    <button type="button" class="btn steper-dismis" id="cancelButton">Cancel</button>
+                    @*  <button type="button" class="btn steper-dismis" data-dismiss="modal">Cancel</button> *@
+                    <button type="button" class="btn steper-save" id="SaveUserButton">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#cancelButton").click(function () {
+
+            window.location.href = '@Url.Action("UserMaster", "UserMaster")';
+        });
+    });
+</script>
+<script>
+    $("#SaveUserButton").click(function () {
+        debugger;
+        var emailPattern = /^[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        var phonePattern = /^\d{10}$/;
+
+        var Email = $("#UserEmail").val();
+        var Phone = $("#UserPhone").val();
+
+        if ($("#UserName").val() === "" ||
+            $("#UserPassword").val() === "" ||
+            $("#UserPhone").val() === "") {
+            alertify.notify('@_sconfiguration["ConfigMessage:RequiredFieldError"]', '@_sconfiguration["Alertify:Notification:Error"]', @_sconfiguration["Alertify:Notification:TmError"], function () { console.log('dismissed'); });
+            // alert("All fields are required.");
+            setTimeout(function () {
+                return false;
+            }, 5000);
+        }
+
+        if (!emailPattern.test(Email)) {
+            // alert("Please enter a valid email address.");
+            alertify.notify('@_sconfiguration["ConfigMessage:RecordEmailNullError"]', '@_sconfiguration["Alertify:Notification:Error"]', @_sconfiguration["Alertify:Notification:TmError"], function () { console.log('dismissed'); });
+            return false;
+        }
+
+        if (!phonePattern.test(Phone)) {
+            // alert("Please enter a valid 10-digit phone number.");
+            alertify.notify('@_sconfiguration["ConfigMessage:RecordPhoneNullError "]', '@_sconfiguration["Alertify:Notification:Error"]', @_sconfiguration["Alertify:Notification:TmError"], function () { console.log('dismissed'); });
+            return false;
+        }
+        debugger;
+        var Data = {
+            UserID: $("#UserID").val(),
+            UserName: $("#UserName").val(),
+            UserPhone: $("#UserPhone").val(),
+            UserEmail: $("#UserEmail").val(),
+            UserPassword: $("#UserPassword").val(),
+            UserType : $("#UserType").val(),
+            Active: $("#Active").val(),
+        };
+        var formData = new FormData();
+        //formdata.append('tags', JSON.stringify(tags));
+        formData.append("Data", JSON.stringify(Data));
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("Save")', // we are calling json method
+            dataType: 'json',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (jsonResult) {
+                var datadt = JSON.parse(jsonResult);
+                if (datadt.length > 0) {
+                    if (datadt[0].Pk != 0 && datadt[0].IsDuplicate  == 0) {
+
+                        alertify.notify('@_sconfiguration["ConfigMessage:RecordSavedSuccess"]', '@_sconfiguration["Alertify:Notification:Success"]', @_sconfiguration["Alertify:Notification:TmSuccess"], function () { console.log('dismissed'); });
+                        setTimeout(function () {
+                            window.location.href = '@Url.Action("UserMaster")';
+                        }, 5000);
+                    }
+                    else {
+                        alertify.notify('@_sconfiguration["ConfigMessage:RecordDuplicateUser"]', '@_sconfiguration["Alertify:Notification:Error"]', @_sconfiguration["Alertify:Notification:TmError"], function () { console.log('dismissed'); });
+                        debugger;
+                    }
+                }
+                else {
+                    Result = 0;
+                    console.log(ex);
+                }
+            },
+            error: function (ex) {
+                Result = 0;
+                console.log(ex);
+            }
+        });
+
+       
+    });
+</script>
+
+
+
+<script>
+    $(document).on('keyup focusout change', '#UserName,#UserEmail,#UserEmail,#UserPassword,#UserPhone,#UserType', function () {
+        var IDValue = $(this).val();
+        var Id = $(this).attr('id');
+        debugger;
+        if (IDValue != '' && IDValue != '0') {
+            $(this).addClass('io-valid');
+            $(this).removeClass('io-invalid');
+            $('#' + Id + 'R').addClass('Field-Req');
+            $('#' + Id + 'R').removeClass('Field-Not-Req');
+        }
+        else {
+            $(this).addClass('io-invalid');
+            $(this).removeClass('io-valid');
+            $('#' + Id + 'R').addClass('Field-Not-Req');
+            $('#' + Id + 'R').removeClass('Field-Req');
+        }
+    });
+</script>

@@ -1,0 +1,482 @@
+﻿<!DOCTYPE html>
+    @using ASN.IRepository
+@using ASN.Commons
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor _httpContextAccessor
+@{
+    ISessionFunCommon objSessionFunCommon = new SessionFunCommon(_httpContextAccessor);
+}
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>@ViewData["Title"]K2d2 Task Tracker</title>
+    @* <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" href="~/images/logo/k2d2.jpg"> *@
+    <link rel="shortcut icon" type="image/x-icon" href="~/check/images/logo/k2d2.jpg"> 
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="~/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/css/forms/selects/select2.min.css">
+    <link rel="stylesheet" type="text/css" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="~/fonts/meteocons/style.min.css">
+    <!-- END: Vendor CSS-->
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="~/css/quantumbso.css">
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap-extended.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/colors.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/components.min.css">
+    <!-- END: Theme CSS-->
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="~/css/core/menu/menu-types/vertical-menu.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/core/colors/palette-gradient.min.css">
+    <link rel="stylesheet" type="text/css" href="~/fonts/simple-line-icons/style.min.css">
+    <!-- END: Page CSS-->
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="~/css/style.css" asp-append-version="true">
+    <!-- END: Custom CSS-->
+    <!-- BEGIN: Vendor JS-->
+    <script src="~/vendors/js/vendors.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/lib/datatables/css/jquery.dataTables.css" rel="stylesheet" />
+    <!-- DataTables -->
+    <script type="text/javascript" src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/lib/datatables/js/jquery.dataTables.pageLoadMore.min.js"></script>
+    <link rel="stylesheet" href="~/lib/alertify/dist/css/alertify.min.css" />
+    <link rel="stylesheet" href="~/lib/alertify/dist/css/alertify_themes_default.min.css" />
+    <!-- END: Vendor JS-->
+    @* daterangepicker start *@
+    <link rel="stylesheet" type="text/css" media="all" href="~/vendors/css/daterangepicker.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+    <script type="text/javascript" src="~/vendors/js/daterangepicker.js"></script>
+    @* daterangepicker end *@
+    <style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            display: none;
+        }
+
+        
+
+    </style>
+</head>
+
+<body class="vertical-layout red-band vertical-menu 2-columns   fixed-navbar menu-expanded" data-open="click" data-menu="vertical-menu" data-col="2-columns">
+    <div class="overlay" id="overlay"></div>
+    <div class="brand-band">
+        <img src="~/check/images/logo/k2d2.jpg" />
+    </div>
+  
+    <nav class="header-navbar navbar-expand-md navbar navbar-with-menu fixed-top navbar-semi-dark">
+        <div class="navbar-wrapper">
+           
+            <div class="navbar-container new-breadcrumfor content">
+                <div class="breadcrump">
+                    <ul>
+                        <li>
+                            <div class="top-breadcrump @(ViewData["breadcrumtitle"] != null?"":"hidden")">
+                                <div class="top-breadcrump">
+                                    <a class="breadcrump-active" asp-action="Index" asp-controller="Home">Home <i class="qgsm-q-right"></i></a>
+                                    @if (ViewData["Dbreadcrumtitle"] != null)
+                                    {
+                                        <a class="breadcrump-active" asp-action="@ViewData["DbreadcrumAction"]" asp-controller="@ViewData["DbreadcrumController"]">@ViewData["Dbreadcrumtitle"] <i class="qgsm-q-right"></i></a>
+                                    }
+                                    <span>@ViewData["breadcrumtitle"]</span>
+                                </div>
+                            </div>
+                            <h2 class="breadcrump-title">@ViewData["breadcrumtitle"]</h2>
+                        </li>
+                    </ul>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-mobile">
+                    <ul class="nav navbar-nav mr-auto float-left">
+                    </ul>
+                    <ul class="nav navbar-nav float-right">
+                        <li class="dropdown dropdown-notification nav-item">
+                            <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="qgsm-glossary"></i></a>
+
+                        </li>
+                        
+                            <li class="dropdown dropdown-notification nav-item">
+                                <a class="nav-link nav-link-label" href="#" data-toggle="dropdown" id="btnMailIcon">
+                                    <i class="qgsm-email"></i>
+                                    <span id="UnreadMsgCount1"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                                    <li class="dropdown-menu-header">
+                                        <h6 class="dropdown-header m-0"><span class="grey darken-2">Messages</span><span class="notification-tag badge badge-warning float-right m-0" id="UnreadMsgCount"></span> </h6>
+                                    </li>
+                                    <li class="scrollable-container media-list ps" id="UnreadMsgData">
+                                    </li>
+                                    <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center" href="@Url.Action("Email","Email")?isalert=1">Read all messages</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown dropdown-notification nav-item">
+                                <a class="nav-link nav-link-label" href="#" id="btnNotificationIcon" data-toggle="dropdown">
+                                    <span id="NotificationCount1"></span>
+                                    <i class="qgsm-notifications"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                                    <li class="dropdown-menu-header">
+                                        <h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span><span class="notification-tag badge badge-danger float-right m-0" id="NotificationCount"></span></h6>
+                                    </li>
+                                    <li class="scrollable-container media-list ps" id="Notifications">
+                                    </li>
+                                    <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center" href="@Url.Action("Email","Email")?isalert=1">Read all notifications</a></li>
+                                </ul>
+                            </li>
+                        <li class="dropdown dropdown-notification nav-item">
+                            <a class="nav-link nav-link-label" target="_blank" href="@ViewData["QHelpLink"]"><i class="qgsm-reports"></i></a>
+
+                        </li>
+                    
+                        <li class="dropdown dropdown-notification nav-item">
+                            <a class="nav-link nav-link-label" asp-action="LogOut" asp-controller="Account"><i class="qgsm-logout"></i></a>
+
+                        </li>
+
+                        <li class="nav-item">
+                                <a class="nav-link dropdown-user-link" href="#" data-toggle="dropdown" >
+                                    <div class="avatar avatar-online"><img src="../images/avatar/avatar-s-3.png" alt="avatar"></div>
+                                </a>
+                           
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-label" >
+                                Task Tracker
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- END: Header-->
+    <!-- BEGIN: Main Menu-->
+
+    <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+        <div class="main-menu-content">
+
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                <a class="navbar-brand" href="index.html">
+                    <img class="brand-logo" alt="stack admin logo" src="~/check/images/logo/k2d2.jpg">
+                 
+                </a>
+
+                <li class=" nav-item">
+                    <a asp-controller="Project" asp-action="Project"><span class="side-menu-icon"><img src="~/check/images/qgsm-icons/dashboard.svg"></span><span class="menu-title">Dashboard</span></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#"><span class="side-menu-icon"><img src="~/check/images/logo/k2d2.jpg"></span><span class="menu-title">Report</span></a>
+                    <ul class="menu-content">
+                         <li>
+                            <a class="menu-item" href="@Url.Action("#","#")">
+                                <span class="menu-icon">
+                                    <img src="~/check/images/qgsm-icons/product-manamenet.svg">
+                                </span><span class="menu-name"> Report</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </li>
+                @if (objSessionFunCommon.GetUserData().UserType == "A" || objSessionFunCommon.GetUserData().UserType == "M")
+                {
+                    <li class="nav-item">
+                        <a href="#"><span class="side-menu-icon"><img src="~/check/images/logo/k2d2.jpg"></span><span class="menu-title">Project</span></a>
+                        <ul class="menu-content">
+                            <li>
+                                <a class="menu-item" href="@Url.Action("Project","Project")?togglebtn=true">
+                                    <span class="menu-icon">
+                                        <img src="~/check/images/qgsm-icons/user-managment.svg">
+                                    </span><span class="menu-name">Project List</span>
+                                </a>
+                            </li>
+                           
+
+                        </ul>
+
+                    </li>
+                }
+                @if (objSessionFunCommon.GetUserData().UserType == "A" || objSessionFunCommon.GetUserData().UserType == "M")
+                {
+                <li class="nav-item">
+                    <a href="#"><span class="side-menu-icon"><img src="~/check/images/logo/k2d2.jpg"></span><span class="menu-title">Setting</span></a>
+                    <ul class="menu-content">
+                        <li>
+                            <a class="menu-item" href="@Url.Action("UserMaster","UserMaster")?togglebtn=true">
+                                <span class="menu-icon">
+                                    <img src="~/check/images/qgsm-icons/user-managment.svg">
+                                </span><span class="menu-name">User</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                }
+            </ul>
+        </div>
+    </div>
+    <!-- END: Main Menu-->
+    <!-- BEGIN: Content-->
+    @RenderBody()
+    <!-- END: Content-->
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+    <!-- BEGIN: Footer-->
+    <footer class="footer footer-static custom-footer footer-dark navbar-border">
+        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span class="float-md-left d-block d-md-inline-block">Copyright @System.DateTime.Now.Year.ToString() K2D2 Pvt. Ltd </span></p>
+        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><a href="#">Privacy Policy</a></p>
+    </footer>
+    <!-- END: Footer-->
+    <!-- BEGIN: Vendor JS-->
+    <script src="~/vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="~/vendors/js/scripts/forms/select/form-select2.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+    <!-- BEGIN: Theme JS-->
+    <script src="~/js/core/app-menu.min.js"></script>
+    <script src="~/js/core/app.min.js"></script>
+    <!-- END: Theme JS-->
+    <script src="~/vendors/js/forms/repeater/jquery.repeater.min.js"></script>
+    <script src="~/vendors/js/scripts/forms/form-repeater.min.js"></script>
+    <script src="~/lib/alertify/dist/js/alertify.min.js"></script>
+    <script src="~/js/custom.js" asp-append-version="true"></script>
+    <script src="~/js/scripts/customizer.min.js"></script>
+
+    <!-- Lodash CDN (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  @*   <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuqbso = document.getElementById("menu-qbso");
+            const leftArrow = document.getElementById("left-arrow");
+            const rightArrow = document.getElementById("right-arrow");
+
+            function updateArrows() {
+                leftArrow.disabled = menuqbso.scrollLeft === 0;
+                rightArrow.disabled = menuqbso.scrollLeft + menuqbso.clientWidth >= menuqbso.scrollWidth;
+            }
+
+            leftArrow.addEventListener("click", function () {
+                menuqbso.scrollBy({ left: -200, behavior: 'smooth' });
+            });
+
+            rightArrow.addEventListener("click", function () {
+                menuqbso.scrollBy({ left: 200, behavior: 'smooth' });
+            });
+
+            menuqbso.addEventListener("scroll", updateArrows);
+
+            updateArrows(); // Initialize arrow states
+        });
+
+    </script> *@
+  @*   <script>
+        $('#btnMailIcon').click(function () {
+            if ($(this).attr('aria-expanded') === 'false' || $(this).attr('aria-expanded') === undefined) {
+                UnreadInboxMails();
+                UnreadMailCount();
+            }
+
+        });
+
+        $('#btnNotificationIcon').click(function () {
+            if ($(this).attr('aria-expanded') === 'false' || $(this).attr('aria-expanded') === undefined) {
+                NotificationMails();
+                NotificationMailCount();
+            }
+
+        });
+    </script>
+ *@
+    <script>
+        function UnreadInboxMails() {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetUnreadMails", "Email")',
+                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (jsonResult) {
+                    debugger;
+                    var UnreadMaillist = JSON.parse(jsonResult);
+                    if (UnreadMaillist.length > 0) {
+                        var MailContent = '';
+                        var NodificationContent = '';
+                        var count = 0;
+                        for (var i = 0; i < UnreadMaillist.length; i++) {
+                            MailContent += '<a href="@Url.Action("GetMail", "Email")?Id=' + UnreadMaillist[i]['EmailInbox_Id'] + '&IsEmail=0">';
+                            MailContent += '<div class="media" >';
+                            MailContent += '<div class="media-left"> <span class="avatar avatar-sm avatar-busy rounded-circle" ><i></i></span></div>';
+                            MailContent += '<div class="media-body">';
+                            MailContent += '<h6 class="media-heading"> ' + UnreadMaillist[i]['EmailInbox_From'] + ' </h6>';
+                            MailContent += '<p class="notification-text font-small-3 text-muted"> ' + UnreadMaillist[i]['EmailInbox_Subject'] + ' </p><small>';
+                            MailContent += '<time class="media-meta text-muted"> ' + UnreadMaillist[i]['EmailInbox_Date'] + ' </time>';
+                            MailContent += '</small>';
+                            MailContent += '</div>';
+                            MailContent += '</div>';
+                            MailContent += '</a>';
+                            MailContent += '';
+                            count = count + 1;
+                        }
+
+                        var content = '<div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>';
+
+                        $('#UnreadMsgData').empty().append(MailContent + content);
+                 
+                    }
+                },
+                error: function (ex) {
+                }
+            });
+        }
+
+    </script>
+
+    <script>
+        function UnreadMailCount() {
+        
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetInboxMailCount", "Email")',
+                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (jsonResult) {
+                    var MailCounts = JSON.parse(jsonResult);
+                    if (MailCounts[0].TotalMailCount != 0) {
+                        $('#UnreadMsgCount1').addClass("counter-number");
+                        $('#UnreadMsgCount').text(MailCounts[0].TotalMailCount + ' New');
+                        $('#UnreadMsgCount1').text(MailCounts[0].TotalMailCount + ' New');
+                    }
+                    else {
+                        $('#UnreadMsgCount').empty();
+                        $('#UnreadMsgCount1').empty();
+                        $('#UnreadMsgCount1').removeClass("counter-number");
+
+
+                    }
+                },
+                error: function (ex) {
+                }
+            });
+        }
+
+    </script>
+
+    <script>
+        function NotificationMails() {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetNotificationMails", "Email")',
+                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (jsonResult) {
+                    debugger;
+                    var UnreadMaillist = JSON.parse(jsonResult);
+                    if (UnreadMaillist.length > 0) {
+                        var NotificationContent = '';
+                        var count = 0;
+                        for (var i = 0; i < UnreadMaillist.length; i++) {
+
+                            NotificationContent += '<a href="@Url.Action("GetMail", "Email")?Id=' + UnreadMaillist[i]['EmailInbox_Id'] + '&IsEmail=1">';
+                            NotificationContent += '<div class="media">';
+                            NotificationContent += '<div class="media-body">';
+                            NotificationContent += '<h6 class="media-heading">' + UnreadMaillist[i]['EmailInbox_From'] + '</h6>';
+                            NotificationContent += '<p class="notification-text font-small-3 text-muted">' + UnreadMaillist[i]['EmailInbox_Subject'] + '</p><small></small>';
+                            NotificationContent += '</div>';
+                            NotificationContent += '</div>';
+                            NotificationContent += '</a>';
+
+                            count = count + 1;
+                        }
+
+                        var content = '<div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>';
+
+                        $('#Notifications').empty().append(NotificationContent + content);
+                    }
+                },
+                error: function (ex) {
+                }
+            });
+        }
+
+    </script>
+
+    <script>
+        function NotificationMailCount() {
+          
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetNotificationCount", "Email")',
+                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (jsonResult) {
+                    var MailCounts = JSON.parse(jsonResult);
+                    if (MailCounts[0].TotalMailCount != 0) {
+                        $('#NotificationCount').text(MailCounts[0].TotalMailCount + ' New');
+                        $('#NotificationCount1').text(MailCounts[0].TotalMailCount + ' New');
+                        $('#NotificationCount1').addClass("counter-number");
+                    }
+                    else {
+                        $('#NotificationCount').empty();
+                        $('#NotificationCount1').empty();
+                        $('#NotificationCount1').removeClass("counter-number");
+                    }
+                },
+                error: function (ex) {
+                }
+            });
+        }
+
+    </script>
+    <style>
+        span.counter-number {
+            position: absolute;
+            color: #fff;
+            text-align: center;
+            line-height: 22px;
+            right: 0;
+            font-size: 12px;
+            top: 10px;
+            background: red;
+            width: 20px;
+            border-radius: 100%;
+            height: 20px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            NotificationMailCount();
+            UnreadMailCount();
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+
+            $('.navigation-main .nav-item.has-sub').click(function () {
+                if ($(this).hasClass('open')) {
+                    overlay.style.display = 'none';
+                }
+                else {
+                    overlay.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

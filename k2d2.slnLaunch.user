@@ -1,0 +1,16 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "ASN\\ASN.csproj",
+        "Action": "Start",
+        "DebugTarget": "ASN"
+      },
+      {
+        "Path": "ASN_Report\\ASN_Report.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

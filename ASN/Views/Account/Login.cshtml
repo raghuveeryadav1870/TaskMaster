@@ -1,0 +1,329 @@
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration _sconfiguration
+@using ASN.Models
+@model UserAuth
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Login";
+    ViewData["breadcrumtitle"] = "Login";
+}
+
+<!DOCTYPE html>
+<html class="loading" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Task Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" href="images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="images/ico/favicon-32.png">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" type="text/css" href="vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/meteocons/style.min.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" type="text/css" href="css/quantumbso.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-extended.min.css">
+    <link rel="stylesheet" type="text/css" href="css/colors.min.css">
+    <link rel="stylesheet" type="text/css" href="css/components.min.css">
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" type="text/css" href="css/core/menu/menu-types/vertical-menu.min.css">
+    <link rel="stylesheet" type="text/css" href="css/core/colors/palette-gradient.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/simple-line-icons/style.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        .has-error .form-control {
+            border-color: #ced4da; /* Use the default border color */
+            box-shadow: none; /* Remove any box shadow */
+        }
+
+        /* Increase specificity to ensure the styles are applied */
+        input.form-control#email,
+        input.form-control#password {
+            border: 1px solid #ced4da; /* Default border color */
+        }
+
+            input.form-control#email:focus,
+            input.form-control#password:focus {
+                border-color: #80bdff; /* Border color on focus */
+                box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Focus shadow */
+            }
+
+        /* Ensure form controls have the desired border color and focus style */
+        .form-control {
+            border: 1px solid #ced4da; /* Default border color */
+        }
+
+            .form-control:focus {
+                border-color: #80bdff; /* Border color on focus */
+                box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Focus shadow */
+            }
+
+        /* Optional: Custom error styling for invalid input */
+        .has-error .form-control {
+            border-color: #ced4da; /* Error border color */
+            box-shadow: none;
+        }
+
+        body {
+            background-color: #292929 !important;
+        }
+
+        .form-control {
+            border: 1px solid #ced4da;
+        }
+
+            .form-control:focus {
+                border-color: #80bdff;
+                box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+            }
+
+        .has-error .form-control {
+            border-color: #ced4da;
+            box-shadow: none;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+            .radio-group label {
+                display: flex;
+                align-items: center;
+            }
+    </style>
+</head>
+
+<body class="vertical-layout red-band vertical-menu 2-columns fixed-navbar menu-collapsed" data-open="click" data-menu="vertical-menu" data-col="2-columns">
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <div class="login-box-new">
+                <div class="welcome-login">
+                    <h2 class="welcome-msg">Welcome Back, Project Management</h2>
+                    <a href="#loginModal" role="button" data-toggle="modal">
+                        <img class="img-circle" alt="stack admin logo" src="/check/images/logo/k2d2.jpg">Login
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Modal -->
+        <div id="loginModal" class="modal costumModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <form id="loginForm" method="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset class="form-group">
+                                    <input type="email" class="form-control" id="email" name="Email" placeholder="Enter E-Mail" value="@Model.UserEmail" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset class="form-group">
+                                    <input type="password" class="form-control" id="password" name="Password" placeholder="Password" value="@Model.UserPassword" required>
+
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset class="form-group">
+                                <button class="login-new-btn-hs" id="btnsignin" type="submit">Login  <span class="spin-circle btnsignin">
+                                <img src="~/images/processing.svg" />
+                                </span></button>
+                                </fieldset>
+                                
+                            </div>
+                            @*<div class="col-md-12">
+                                <a href="#forgotPasswordModal" role="button" data-toggle="modal" class="forget-pass">Forgot Password?</a>
+                            </div>*@
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forgot Password Modal -->
+        <div id="forgotPasswordModal" class="modal costumModal" tabindex="-1" role="dialog" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset class="form-group">
+                                    <!-- Corrected -->
+                                    <input type="email" class="form-control" id="forgot-email" name="ForgotEmail" placeholder="Enter E-Mail" required style="border: 1px solid #ced4da;">
+
+@*                                     <input type="email" class="form-control" id="forgot-email" name="ForgotEmail" placeholder="Enter E-Mail"  required style="border: 1px solid #ced4da;>
+ *@                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset class="form-group">
+                                    <input type="password" class="form-control" id="forgot-password" name="ForgotPassword" placeholder="Password" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset class="form-group">
+                                    <button class="login-new-btn-hs sent-pass" type="submit">Login</button>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12 new-data">
+                                <div class="temporary">
+                                    <p>A temporary password is being sent to your registered email.</p>
+                                    <p>Please enter it to proceed with login.</p>
+                                    <a href="#temporaryPasswordModal" role="button" data-toggle="modal" class="forget-pass2">OK</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Temporary Password Modal -->
+        <div id="temporaryPasswordModal" class="modal costumModal" tabindex="-1" role="dialog" aria-labelledby="temporaryPasswordModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset class="form-group">
+
+                                    <input type="email" class="form-control" id="temp-email" name="TempEmail" placeholder="Enter E-Mail" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset class="form-group">
+                                    <input type="password" class="form-control" id="temp-password" name="TempPassword" placeholder="Enter Temp Password" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset class="form-group">
+                                    <a href="#resetPasswordModal" role="button" data-toggle="modal" class="login-new-btn-hs sent-pass reset-pass-btn">Login</a>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reset Password Modal -->
+        <div id="resetPasswordModal" class="modal costumModal" tabindex="-1" role="dialog" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset class="form-group">
+                                    <input type="email" class="form-control" id="reset-email" name="ResetEmail" placeholder="Enter E-Mail" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset class="form-group">
+                                    <input type="password" class="form-control" id="reset-password" name="ResetPassword" placeholder="New Password" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset class="form-group">
+                                    <button class="login-new-btn-hs sent-pass" type="submit">Reset Password</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+    <!-- Vendor JS -->
+    <script src="vendors/js/vendors.min.js"></script>
+    <script src="vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="vendors/js/forms/validation/jquery.validate.min.js"></script>
+
+    <!-- Theme JS -->
+    <script src="js/core/app-menu.min.js"></script>
+    <script src="js/core/app.min.js"></script>
+    <script src="js/scripts/components.min.js"></script>
+
+    <!-- Page JS -->
+    <script src="js/scripts/forms/form-login.min.js"></script>
+    <script src="js/scripts/modal/components-modal.min.js"></script>
+    <script>
+        $('#password,#email').keydown(function (event) {
+            debugger;
+            if (event.keyCode == 13) {
+                event.preventDefault();
+                $('#btnsignin').click();
+                return false;
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        var email = '';
+        var password = '';
+        $('#btnsignin').click(function () {
+            debugger;
+            if ($('#btnsignin').attr('disabled') == undefined) {
+
+                email = $('#email').val().trim();
+                password = $('#password').val().trim();
+                if (email != '' && password != '') {
+                    $('#btnsignin').attr('disabled', 'disabled');
+                    $('#btnsignin').removeClass('kd-btnsignin');
+                    $('.spin-circle.btnsignin').show();
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("Login")', // we are calling json method
+                        dataType: 'json',
+                        data: { UserEmail: email, UserPassword: password },
+                        success: function (jsonResult) {
+                            var datadt = JSON.parse(jsonResult);
+                            debugger;
+                            if (datadt.UserID != undefined && datadt.UserID != null && datadt.UserID != '0') {
+                               
+                                
+                                $('.spin-circle.btnsignin').hide();
+                                window.location.href = '@Url.Action("Project", "Project")';
+                            }
+                            else {
+                                alertify.notify('@_sconfiguration["ConfigMessage:LoginAuthenticationError"]', '@_sconfiguration["Alertify:Notification:Error"]', @_sconfiguration["Alertify:Notification:TmError"], function () { console.log('dismissed'); });
+                                $('#btnsignin').removeAttr('disabled');
+                                $('#btnsignin').addClass('kd-btnsignin');
+                                $('.spin-circle.btnsignin').hide();
+                            }
+
+                        },
+                        error: function (ex) {
+                            console.log(ex);
+                            $('#btnsignin').removeAttr('disabled');
+                            $('#btnsignin').addClass('kd-btnsignin');
+                            $('.spin-circle.btnsignin').hide();
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+ 
+
+

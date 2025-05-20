@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsBookingReport" targetNamespace="http://tempuri.org/dsBookingReport.xsd" xmlns:mstns="http://tempuri.org/dsBookingReport.xsd" xmlns="http://tempuri.org/dsBookingReport.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsBookingReport" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsBookingReport" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsBookingReport">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataSet1" msprop:Generator_RowEvHandlerName="DataSet1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataSet1RowDeleted" msprop:Generator_RowDeletingName="DataSet1RowDeleting" msprop:Generator_RowEvArgName="DataSet1RowChangeEvent" msprop:Generator_TablePropName="DataSet1" msprop:Generator_RowChangedName="DataSet1RowChanged" msprop:Generator_UserTableName="DataSet1" msprop:Generator_RowChangingName="DataSet1RowChanging" msprop:Generator_RowClassName="DataSet1Row" msprop:Generator_TableClassName="DataSet1DataTable" msprop:Generator_TableVarName="tableDataSet1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Parking" msprop:Generator_ColumnPropNameInTable="ParkingColumn" msprop:Generator_ColumnPropNameInRow="Parking" msprop:Generator_UserColumnName="Parking" msprop:Generator_ColumnVarNameInTable="columnParking" type="xs:string" minOccurs="0" />
+              <xs:element name="Gate" msprop:Generator_ColumnPropNameInTable="GateColumn" msprop:Generator_ColumnPropNameInRow="Gate" msprop:Generator_UserColumnName="Gate" msprop:Generator_ColumnVarNameInTable="columnGate" type="xs:string" minOccurs="0" />
+              <xs:element name="VehicleType" msprop:Generator_ColumnPropNameInTable="VehicleTypeColumn" msprop:Generator_ColumnPropNameInRow="VehicleType" msprop:Generator_UserColumnName="VehicleType" msprop:Generator_ColumnVarNameInTable="columnVehicleType" type="xs:string" minOccurs="0" />
+              <xs:element name="VehicleNumber" msprop:Generator_ColumnPropNameInTable="VehicleNumberColumn" msprop:Generator_ColumnPropNameInRow="VehicleNumber" msprop:Generator_UserColumnName="VehicleNumber" msprop:Generator_ColumnVarNameInTable="columnVehicleNumber" type="xs:string" minOccurs="0" />
+              <xs:element name="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_UserColumnName="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" type="xs:string" minOccurs="0" />
+              <xs:element name="CheckInOn" msprop:Generator_ColumnPropNameInTable="CheckInOnColumn" msprop:Generator_ColumnPropNameInRow="CheckInOn" msprop:Generator_UserColumnName="CheckInOn" msprop:Generator_ColumnVarNameInTable="columnCheckInOn" type="xs:string" minOccurs="0" />
+              <xs:element name="CheckOutOn" msprop:Generator_ColumnPropNameInTable="CheckOutOnColumn" msprop:Generator_ColumnPropNameInRow="CheckOutOn" msprop:Generator_UserColumnName="CheckOutOn" msprop:Generator_ColumnVarNameInTable="columnCheckOutOn" type="xs:string" minOccurs="0" />
+              <xs:element name="PaymentMode" msprop:Generator_UserColumnName="PaymentMode" msprop:Generator_ColumnPropNameInTable="PaymentModeColumn" msprop:Generator_ColumnPropNameInRow="PaymentMode" msprop:Generator_ColumnVarNameInTable="columnPaymentMode" type="xs:string" minOccurs="0" />
+              <xs:element name="BookingNumber" msprop:Generator_ColumnPropNameInRow="BookingNumber" msprop:Generator_ColumnPropNameInTable="BookingNumberColumn" msprop:Generator_ColumnVarNameInTable="columnBookingNumber" msprop:Generator_UserColumnName="BookingNumber" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

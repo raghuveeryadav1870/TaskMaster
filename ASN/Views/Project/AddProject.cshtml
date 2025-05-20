@@ -1,0 +1,246 @@
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration _sconfiguration
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "AddTask";
+    ViewData["breadcrumtitle"] = "Add Task";
+}
+@using ASN.Models
+@model ProjectModel
+
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <form id="parkingForm">
+            <div class="document-edit-bar">
+                <div class="row edit-documents">
+                    <input type="hidden" id="ID" name="ID" value="@Model.ID" />
+                   
+                    <div class="col-md-4">
+                        <label class="simple-type-text basic-select-section" for="Project">
+                            <span class="simple-single-select">Project<span>*</span></span>
+                            @Html.DropDownListFor(m => m.Project, Model.lstProject, new { @class = "select2-placeholder form-control select2-hidden-accessible", @tabindex = "-1", @aria_hidden = "true" })
+                            <label class="Field-Req Field-ReqColor" id="ProjectR">Project Is Required</label>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="simple-type-text basic-select-section" for="SubProject">
+                            <span class="simple-single-select">Sub Project<span>*</span></span>
+                            @Html.DropDownListFor(m => m.SubProject, Model.lstSubProject, new { @class = "select2-placeholder form-control select2-hidden-accessible", @tabindex = "-1", @aria_hidden = "true" })
+                            <label class="Field-Req Field-ReqColor" id="SubProjectR">Sub Project Is Required</label>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="simple-type-text basic-select-section" for="AllocatedBy">
+                            <span class="simple-single-select">Allocated By<span>*</span></span>
+                            @Html.DropDownListFor(m => m.AllocatedBy, Model.lstUser, new { @class = "select2-placeholder form-control select2-hidden-accessible", @tabindex = "-1", @aria_hidden = "true" })
+                            <label class="Field-Req Field-ReqColor" id="AllocatedByR">Allocated By Is Required</label>
+                        </label>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="simple-type-text">
+                            @Html.TextAreaFor(Model => Model.Title, new { @class = "input-simple" })
+                            <label for="Title" class="simple-label">Title<span>*</span></label>
+                            <label class="Field-Req Field-ReqColor" id="TitleR">Title Is Required</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="simple-type-text">
+                            @Html.TextAreaFor(Model => Model.Description, new { @class = "input-simple" })
+                            <label for="Description" class="simple-label">Description<span>*</span></label>
+                            <label class="Field-Req Field-ReqColor" id="DescriptionR">Description Is Required</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="simple-type-text basic-select-section" for="TakenCareBy">
+                            <span class="simple-single-select">Task taken care by<span>*</span></span>
+                            @Html.DropDownListFor(m => m.TakenCareBy, Model.lstUser, new { @class = "select2-placeholder form-control select2-hidden-accessible", @tabindex = "-1", @aria_hidden = "true" })
+                            <label class="Field-Req Field-ReqColor" id="TakenCareByR">Task taken care Is Required</label>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="simple-type-text">
+                            @Html.TextBoxFor(Model => Model.StartDate, new { @class = "input-simple", @type = "date", @name = "", @id = "StartDate", @placeholder = "MM/DD/YYYY" })
+                            <label for="StartDate" class="simple-label">Start Date</label>
+                            <label class="Field-Req Field-ReqColor" id="StartDateR">Start Date Is Required</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="simple-type-text">
+                            @Html.TextBoxFor(Model => Model.EndDate, new { @class = "input-simple", @type = "date", @name = "", @id = "EndDate", @placeholder = "MM/DD/YYYY" })
+                            <label for="EndDate" class="simple-label">End Date</label>
+                            <label class="Field-Req Field-ReqColor" id="EndDateR">End Date Is Required</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="simple-type-text">
+                            @Html.TextBoxFor(Model => Model.TotalHours, new { @class = "input-simple",@type="number" })
+                            <label for="TotalHours" class="simple-label">Men Hours</label>
+                            <label class="Field-Req Field-ReqColor" id="TotalHoursR">Men Hours Is Required</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="simple-type-text basic-select-section" for="AllocatedTo">
+                            <span class="simple-single-select">Status<span>*</span></span>
+                            @Html.DropDownListFor(m => m.Status, Model.lstStatus, new { @class = "select2-placeholder form-control select2-hidden-accessible", @tabindex = "-1", @aria_hidden = "true" })
+                            <label class="Field-Req Field-ReqColor" id="StatusR">Status Is Required</label>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="simple-type-text basic-select-section" for="AllocatedTo">
+                            <span class="simple-single-select">Priority<span>*</span></span>
+                            @Html.DropDownListFor(m => m.Priority, Model.lstPriority, new { @class = "select2-placeholder form-control select2-hidden-accessible", @tabindex = "-1", @aria_hidden = "true" })
+                            <label class="Field-Req Field-ReqColor" id="StatusR">Priority Is Required</label>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="profile-upload-box" style="height:100px;width:150px;">
+                            <div class="img img-thumbnail">
+                                <img class="profile-pic" id="imgProductLogo" src="~/images/avatar/no-image.png" alt="Upload img">
+                            </div>
+                            <div class="p-image">
+                                <i class="fa fa-camera upload-button"></i>
+                                <input class="file-upload" type="file" id="UserLogo" accept="~/image/*" />
+                            </div>
+                        </div>
+
+                    </div>
+                    @if(Model.ID !=0)
+                    {
+                    <div class="col-md-4">
+                        <label class="simple-type-text basic-select-section" for="TestedBy">
+                            <span class="simple-single-select">Tested By<span>*</span></span>
+                            @Html.DropDownListFor(m => m.TestedBy, Model.lstUser, new { @class = "select2-placeholder form-control select2-hidden-accessible", @tabindex = "-1", @aria_hidden = "true" })
+                            <label class="Field-Req Field-ReqColor" id="TestedByR">Tested By Is Required</label>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="simple-type-text basic-select-section" for="AllocatedBy">
+                            <span class="simple-single-select">Live By<span>*</span></span>
+                            @Html.DropDownListFor(m => m.LiveBy, Model.lstUser, new { @class = "select2-placeholder form-control select2-hidden-accessible", @tabindex = "-1", @aria_hidden = "true" })
+                            <label class="Field-Req Field-ReqColor" id="LiveByR">Live By Is Required</label>
+                        </label>
+                    </div>
+                    }
+                </div>
+
+                <div class="document-footer stepper-close-btn">
+                    @Html.HiddenFor(m => m.ID)
+                    <button type="button" class="btn steper-dismis" id="cancelButton">Cancel</button>
+                    <button type="button" class="btn steper-save" id="SaveUserButton">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#cancelButton").click(function () {
+
+            window.location.href = '@Url.Action("Project", "Project")';
+        });
+    });
+</script>
+<script>
+    $("#SaveUserButton").click(function () {
+        debugger;
+        
+       
+        var Data = {
+            ID: $("#ID").val(),
+            Title: $("#Title").val(),
+            Description: $("#Description").val(),
+            Project: $("#Project").val(),
+            SubProject: $("#SubProject").val(),
+            TotalHours: $("#TotalHours").val(),
+            StartDate: $("#StartDate").val(),
+            EndDate: $("#EndDate").val(),
+            AllocatedBy: $("#AllocatedBy").val(),
+            TakenCareBy : $("#TakenCareBy").val(),
+            LiveBy: $("#LiveBy").val(),
+            TestedBy : $("#TestedBy").val(),
+            Status: $("#Status").val(),
+            Priority: $("#Priority").val(),
+        };
+        var formData = new FormData();
+         var files = $('#UserLogo').prop("files");
+        formData.append("Img", files[0]);
+        formData.append("Data", JSON.stringify(Data));
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("Save")', 
+            dataType: 'json',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (jsonResult) {
+                var datadt = JSON.parse(jsonResult);
+                if (datadt.length > 0) {
+                    if (datadt[0].Pk != 0 && datadt[0].IsDuplicate  == 0) {
+
+                        alertify.notify('@_sconfiguration["ConfigMessage:RecordSavedSuccess"]', '@_sconfiguration["Alertify:Notification:Success"]', @_sconfiguration["Alertify:Notification:TmSuccess"], function () { console.log('dismissed'); });
+                        setTimeout(function () {
+                            window.location.href = '@Url.Action("Project")';
+                        }, 5000);
+                    }
+                    else {
+                        alertify.notify('@_sconfiguration["ConfigMessage:RecordDuplicateUser"]', '@_sconfiguration["Alertify:Notification:Error"]', @_sconfiguration["Alertify:Notification:TmError"], function () { console.log('dismissed'); });
+                        debugger;
+                    }
+                }
+                else {
+                    Result = 0;
+                }
+            },
+            error: function (ex) {
+                Result = 0;
+                console.log(ex);
+            }
+        });
+
+      
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#Project').change(function () {
+            var projectId = $(this).val(); 
+            $.ajax({
+                url: '@Url.Action("GetSubProjects", "Project")',
+                type: 'GET',
+                data: { projectId: projectId },
+                success: function (data) {
+                    $('#SubProject').empty();
+                    $.each(data, function (index, subProject) {
+                        $('#SubProject').append('<option value="' + subProject.value + '">' + subProject.text + '</option>');
+                    });
+                    $('#SubProject').select2();
+                },
+                error: function (error) {
+                    console.log('Error:', error);
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    $(document).on('keyup focusout change', '#ProjectName,#StartDate,#StartDate,#AllocatedBy,#TotalHours,#AllocatedTo', function () {
+        var IDValue = $(this).val();
+        var Id = $(this).attr('id');
+        debugger;
+        if (IDValue != '' && IDValue != '0') {
+            $(this).addClass('io-valid');
+            $(this).removeClass('io-invalid');
+            $('#' + Id + 'R').addClass('Field-Req');
+            $('#' + Id + 'R').removeClass('Field-Not-Req');
+        }
+        else {
+            $(this).addClass('io-invalid');
+            $(this).removeClass('io-valid');
+            $('#' + Id + 'R').addClass('Field-Not-Req');
+            $('#' + Id + 'R').removeClass('Field-Req');
+        }
+    });
+</script>

@@ -1,0 +1,324 @@
+﻿@model ProjectModel
+@inject Microsoft.Extensions.Configuration.IConfiguration _sconfiguration
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Project List";
+    ViewData["breadcrumtitle"] = "Project List";
+}
+
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <div class="user-list">
+            <div class="row listing-titles">
+                <!-- Listing titles -->
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive listing-table header-fix">
+                        <table class="table" id="NTable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="table-th-col">
+                                            <span>Title</span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="table-th-col">
+                                            <span>Description</span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="table-th-col">
+                                            <span>Project</span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="table-th-col">
+                                            <span>Sub Project</span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="table-th-col">
+                                            <span>Allocated To</span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="table-th-col">
+                                            <span>Taken Care By</span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="table-th-col">
+                                            <span>Priority</span>
+                                        </div>
+                                    </th>
+                                   
+                                    <th>
+                                        <div class="table-th-col">
+                                            <span>Total Hours</span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="table-th-col">
+                                            <span>Start Date</span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="table-th-col">
+                                            <span>End Date</span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="table-th-col">
+                                            <span>Status</span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="table-th-col">
+                                            <span>Tested By</span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="table-th-col">
+                                            <span>Live By</span>
+                                        </div>
+                                    </th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                        </table>
+                        <a class="load-more-btn" id="load-more-btn" href="#">Load More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="button-bottom">
+                <button id="Addbtn" type="button" class="add-btn-company pull-right">ADD Project</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        AddDatatable();
+    });
+    function AddDatatable() {
+        debugger;
+        var wobj = {};
+        wobj.AuthorityCode = "test";
+        debugger;
+        var NTable = $('#NTable').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "No Records Found"
+            },
+            "processing": true,
+            "serverSide": true,
+            "searching": true,
+            "filter": false,
+            "pagging": false,
+            "iDisplayLength": 10,
+            "dom": '<"top"><"bottom"><"clear">',
+            "order": [[1, 'desc']],
+            "orderMulti": false,
+            drawCallback: function () {
+                if ($('#load-more-btn').is(':visible')) {
+                    //$('html, body').animate({
+                    //    scrollTop: $('#load-more-btn').offset().top
+                    //}, 1000);
+                }
+                $('#load-more-btn').toggle(this.api().page.hasMore());
+                var infod = this.api().page.info();
+                var resinfo = '<p>Listing <span class="list-totals">' + (infod.recordsTotal > 0 ? (infod.start + 1) : infod.start) + '</span> - <span class="list-start">' + infod.end + '</span> of <span class="list-last">' + infod.recordsTotal + '</span></p>';
+                $('#search-text-info').html(resinfo);
+            },
+            "ajax": {
+                "url": "@Url.Action("Get")",
+                "type": "POST",
+                "datatype": "json",
+                "data": { authority: wobj }
+            },
+            "columns": [
+                 {
+                    "data": "title", "name": "title", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                        str = '<td>' + row.title + '</td>'
+                        return str;
+                    }
+                },
+                 {
+                    "data": "Description", "name": "Description", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                        str = '<td>' + row.Description + '</td>'
+                        return str;
+                    }
+                },
+                {
+                    "data": "ProjectName", "name": "ProjectName", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                          if (row.ProjectName != null)
+                       {
+                        str = '<td>' + row.ProjectName + '</td>'
+                       }
+                        return str;
+                    }
+                },
+                {
+                    "data": "SubProjectName", "name": "SubProjectName", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                         if (row.SubProjectName != null)
+                       {
+                        str = '<td>' + row.SubProjectName + '</td>'
+                       }
+                        return str;
+                    }
+                },
+                {
+                    "data": "AllocatedBy", "name": "AllocatedBy", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                         if (row.AllocatedBy != null)
+                       {
+                        str = '<td>' + row.AllocatedBy + '</td>'
+                       }
+                        return str;
+                    }
+                },
+                 {
+                    "data": "Takencareby", "name": "Takencareby", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                        str = '<td>' + row.Takencareby + '</td>'
+                        return str;
+                    }
+                },
+                    {
+                    "data": "Priority", "name": "Priority", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                        str = '<td>' + row.Priority + '</td>'
+                        return str;
+                    }
+                },
+                 {
+                    "data": "ManHours", "name": "ManHours", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                        str = '<td>' + row.ManHours + '</td>'
+                        return str;
+                    }
+                },
+                   {
+                       "data": "StartDate", "name": "StartDate", "autoWidth": true, render: function (data, type, row) {
+                         var str = '';
+                       if (row.StartDate != null)
+                       {
+                           str = '<td>' + row.StartDate + '</td>';
+                       }
+                         return str;
+                     }
+                  },
+                 {
+                    "data": "EndDate", "name": "EndDate", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                        if(row.EndDate !=null)
+                        {
+                        str = '<td>' + row.EndDate + '</td>'
+                        }
+                        return str;
+                    }
+                },
+                 
+                 {
+                    "data": "Status", "name": "Status", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                       str = '<td>' + row.Status + '</td>'
+                        return str;
+                    }
+                },
+
+                 {
+                    "data": "TestedBy", "name": "TestedBy", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                        if(row.TestedBy !=null)
+                        {
+                        str = '<td>' + row.TestedBy + '</td>'
+                        }
+                        return str;
+                    }
+                },
+                 {
+                    "data": "Liveby", "name": "Liveby", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                         if(row.Liveby !=null)
+                         {
+                        str = '<td>' + row.Liveby + '</td>'
+                         }
+                        return str;
+                    }
+                },
+                {
+                    "data": "Action", "name": "Action", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                        str = '<td> <div class="table-dropdown">';
+                        str += '<button class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <li class="fa fa-ellipsis-v"> </i></button > <div class="dropdown-menu" > <ul> ';
+
+                        str += '<li><a  href="@Url.Action("AddProject")?ID=' + row.ID + '"> Edit</a></li>';
+                        // str += ' <li><a class="Delete" Id = "'+ row.Id + '" href="javascript:void(0)" >Delete</a></li>';
+
+
+                        str += '</ul> </div> </div> </td>';
+                        return str;
+                    }
+                },
+
+
+            ]
+        });
+        $('#load-more-btn').on('click', function () {
+            // Load more data
+            NTable.page.loadMore();
+
+        });
+        $('#search-txt-btn').keyup(function () {
+            WTable.search($(this).val()).draw();
+        })
+    }
+</script>
+<script>
+    $("#Addbtn").click(function () {
+        debugger;
+        window.location.href = '@Url.Action("AddProject")';
+    });
+</script>
+<script>
+    $(document).on('click', ".Delete", function () {
+          debugger;
+          var  Id = $(this).attr('Id');
+          alertify.confirm('Confirm Title', '@Html.Raw(_sconfiguration["ConfigMessage:ConfirmDelete"])', function () {
+      window.location.href = '@Url.Action("Deactivate")?ID=' + Id  + '&IsActive=2';
+          },function (){}).set('closable', false).set('labels', { cancel: 'No', ok: 'Yes' });
+          // });
+      });
+</script>
+
+
+<script>
+    $(document).on('click', ".deactivate", function () {
+    debugger;
+    var ID = $(this).attr('ID');
+    var Active = $(this).attr('IsActive');
+    if (Active == "1") {
+        window.location.href = '@Url.Action("Deactivate")?ID=' + ID + '&IsActive=1';
+        alertify.notify('@_sconfiguration["ConfigMessage:RecordActiveSuccess"]', '@_sconfiguration["Alertify:Notification:Success"]', @_sconfiguration["Alertify:Notification:TmError"], function () { console.log('dismissed'); });
+        setTimeout(function () {
+             window.location.href = '@Url.Action("Project")';
+        }, 5000);
+    }
+    else{
+        window.location.href = '@Url.Action("Deactivate")?ID=' + ID + '&IsActive=0';
+        alertify.notify('@_sconfiguration["ConfigMessage:RecordDeactiveSuccess"]', '@_sconfiguration["Alertify:Notification:Success"]', @_sconfiguration["Alertify:Notification:TmError"], function () { console.log('dismissed'); }); setTimeout(function () {
+          window.location.href = '@Url.Action("Project")';
+        }, 5000);
+    }
+    });
+</script>
+
+

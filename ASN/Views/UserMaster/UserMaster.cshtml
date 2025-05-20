@@ -1,0 +1,224 @@
+﻿@model UserMasterModel
+@inject Microsoft.Extensions.Configuration.IConfiguration _sconfiguration
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "UserMasters List";
+    ViewData["breadcrumtitle"] = "User Masters";
+}
+
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <div class="user-list">
+            <div class="row listing-titles">
+                <!-- Listing titles -->
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive listing-table header-fix">
+                        <table class="table" id="NTable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="table-th-col">
+                                            <span>User Name</span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="table-th-col">
+                                            <span>User Email</span>
+                                        </div>
+                                    </th>
+                                    @* <th>
+                                    <div class="table-th-col">
+                                    <span>Companylatitute</span>
+                                    </div>
+                                    </th>
+                                    <th>
+                                    <div class="table-th-col">
+                                    <span>Companylong</span>
+                                    </div>
+                                    </th> *@
+                                    <th>
+                                        <div class="table-th-col">
+                                            <span>User Phone</span>
+                                        </div>
+                                    </th>
+                                     <th>
+                                        <div class="table-th-col">
+                                            <span>Status</span>
+                                        </div>
+                                    </th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                        </table>
+                        <a class="load-more-btn" id="load-more-btn" href="#">Load More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="button-bottom">
+                @* <a id="addAuthorityBtn" href="@Url.Action("AddGateMaster")" style="padding-top: 15px;" type="button" class="add-btn-company pull-right">ADD GateMaster</a>*@
+                <button id="Addbtn" type="button" class="add-btn-company pull-right">ADD User</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        AddDatatable();
+    });
+    function AddDatatable() {
+        debugger;
+        var wobj = {};
+        wobj.AuthorityCode = "test";
+        //wobj.AuthorityCode = $('#AuthorityCode').val();
+        //wobj.StateName = $('#StateName').val();
+        //wobj.PinCode = $('#PinCode').val();
+        //wobj.Phone = $('#Phone').val();
+        //wobj.AuthorityLocation = $('#AuthorityLocation').val();
+        debugger;
+        var NTable = $('#NTable').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "No Records Found"
+            },
+            "processing": true,
+            "serverSide": true,
+            "searching": true,
+            "filter": false,
+            "pagging": false,
+            "iDisplayLength": 10,
+            "dom": '<"top"><"bottom"><"clear">',
+            "order": [[1, 'desc']],
+            "orderMulti": false,
+            drawCallback: function () {
+                if ($('#load-more-btn').is(':visible')) {
+                    //$('html, body').animate({
+                    //    scrollTop: $('#load-more-btn').offset().top
+                    //}, 1000);
+                }
+                $('#load-more-btn').toggle(this.api().page.hasMore());
+                var infod = this.api().page.info();
+                var resinfo = '<p>Listing <span class="list-totals">' + (infod.recordsTotal > 0 ? (infod.start + 1) : infod.start) + '</span> - <span class="list-start">' + infod.end + '</span> of <span class="list-last">' + infod.recordsTotal + '</span></p>';
+                $('#search-text-info').html(resinfo);
+            },
+            "ajax": {
+                "url": "@Url.Action("Get")",
+                "type": "POST",
+                "datatype": "json",
+                "data": { authority: wobj }
+            },
+            "columns": [
+                {
+                    "data": "UserName", "name": "UserName", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                        str = '<td>' + row.UserName + '</td>'
+                        return str;
+                    }
+                },
+                {
+                    "data": "UserEmailID", "name": "UserEmailID", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                        str = '<td>' + row.UserEmailID + '</td>'
+                        return str;
+                    }
+                },
+                
+                {
+                    "data": "phone", "name": "phone", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                        str = '<td>' + row.phone + '</td>'
+                        return str;
+                    }
+                },
+                 {
+                    "data": "Active", "name": "Active", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                        if (row.Active == "1") {
+                            str = '<td>Active</td>';
+                        }
+                        else {
+                            str = '<td>De-Active</td>';
+                        }
+                        return str;
+                    }
+                },
+                {
+                    "data": "Action", "name": "Action", "autoWidth": true, render: function (data, type, row) {
+                        var str = '';
+                        str = '<td> <div class="table-dropdown">';
+                        str += '<button class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <li class="fa fa-ellipsis-v"> </i></button > <div class="dropdown-menu" > <ul> ';
+
+                        str += '<li><a class="edit-authority"  href="@Url.Action("AddUserMaster")?ID=' + row.UserId + '"> Edit</a></li>';
+                        if (row.Active == "1") {
+                             str += ' <li><a class="deactivate" ID="' + row.UserId + '"IsActive="0" href="javascript:void(0)" >De-Activate</a></li > ';
+                        
+                            // str += ' <li><a class="deactivate-authority"  href="@Url.Action("Deactivate")?ID=' + row.UserId + '&IsActive=0" >De-Activate</a></li>';
+                        }
+                        else {
+                             str += ' <li><a class="deactivate" ID="' + row.UserId + ' " IsActive="1" href="javascript:void(0)" >Activate</a></li > ';
+                           
+                            // str += ' <li><a class="deactivate-authority"  href="@Url.Action("Deactivate")?ID=' + row.UserId + '&IsActive=1" >Activate</a></li>';
+                        }
+                        str += ' <li><a class="Delete" UserId = "'+ row.UserId + '" href="javascript:void(0)" >Delete</a></li>';
+
+
+                        str += '</ul> </div> </div> </td>';
+                        return str;
+                    }
+                },
+
+
+            ]
+        });
+        $('#load-more-btn').on('click', function () {
+            // Load more data
+            NTable.page.loadMore();
+
+        });
+        $('#search-txt-btn').keyup(function () {
+            WTable.search($(this).val()).draw();
+        })
+    }
+</script>
+<script>
+    $("#Addbtn").click(function () {
+        debugger;
+        window.location.href = '@Url.Action("AddUserMaster")';
+    });
+</script>
+<script>
+    $(document).on('click', ".Delete", function () {
+          debugger;
+          var  UserId = $(this).attr('UserId');
+          alertify.confirm('Confirm Title', '@Html.Raw(_sconfiguration["ConfigMessage:ConfirmDelete"])', function () {
+      window.location.href = '@Url.Action("Deactivate")?ID=' + UserId  + '&IsActive=2';
+          },function (){}).set('closable', false).set('labels', { cancel: 'No', ok: 'Yes' });
+          // });
+      });
+</script>
+
+
+<script>
+    $(document).on('click', ".deactivate", function () {
+    debugger;
+    var ID = $(this).attr('ID');
+    var Active = $(this).attr('IsActive');
+    if (Active == "1") {
+        window.location.href = '@Url.Action("Deactivate")?ID=' + ID + '&IsActive=1';
+        alertify.notify('@_sconfiguration["ConfigMessage:RecordActiveSuccess"]', '@_sconfiguration["Alertify:Notification:Success"]', @_sconfiguration["Alertify:Notification:TmError"], function () { console.log('dismissed'); });
+        setTimeout(function () {
+             window.location.href = '@Url.Action("UserMaster")';
+        }, 5000);
+    }
+    else{
+        window.location.href = '@Url.Action("Deactivate")?ID=' + ID + '&IsActive=0';
+        alertify.notify('@_sconfiguration["ConfigMessage:RecordDeactiveSuccess"]', '@_sconfiguration["Alertify:Notification:Success"]', @_sconfiguration["Alertify:Notification:TmError"], function () { console.log('dismissed'); }); setTimeout(function () {
+          window.location.href = '@Url.Action("UserMaster")';
+        }, 5000);
+    }
+    });
+</script>
+
+

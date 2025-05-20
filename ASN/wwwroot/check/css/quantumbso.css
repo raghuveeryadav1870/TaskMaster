@@ -1,0 +1,169 @@
+@font-face {
+  font-family: 'quantumbso';
+  src:  url('fonts/quantumbso.eot?xluzhj');
+  src:  url('fonts/quantumbso.eot?xluzhj#iefix') format('embedded-opentype'),
+    url('fonts/quantumbso.ttf?xluzhj') format('truetype'),
+    url('fonts/quantumbso.woff?xluzhj') format('woff'),
+    url('fonts/quantumbso.svg?xluzhj#quantumbso') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="qgsm-"], [class*=" qgsm-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'quantumbso' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: 'egsm';
+  src:  url('fonts/egsm.eot?jy60st');
+  src:  url('fonts/egsm.eot?jy60st#iefix') format('embedded-opentype'),
+    url('fonts/egsm.ttf?jy60st') format('truetype'),
+    url('fonts/egsm.woff?jy60st') format('woff'),
+    url('fonts/egsm.svg?jy60st#egsm') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="egsm-"], [class*=" egsm-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'egsm' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.qgsm-q-bottom:before {
+  content: "\e919";
+}
+.qgsm-q-top:before {
+  content: "\e91a";
+}
+.qgsm-q-left:before {
+  content: "\e91b";
+}
+.qgsm-q-right:before {
+  content: "\e91c";
+}
+.qgsm-file:before {
+  content: "\e900";
+}
+.qgsm-outline-star:before {
+  content: "\e901";
+}
+.qgsm-close:before {
+  content: "\e902";
+}
+.qgsm-star-fill:before {
+  content: "\e903";
+}
+.qgsm-bottom-arrow:before {
+  content: "\e904";
+}
+.qgsm-top-arrow:before {
+  content: "\e905";
+}
+.qgsm-right-arrow:before {
+  content: "\e906";
+}
+.qgsm-left-arrow:before {
+  content: "\e907";
+}
+.qgsm-edit:before {
+  content: "\e908";
+}
+.qgsm-eye2:before {
+  content: "\e909";
+}
+.qgsm-delete:before {
+  content: "\e90a";
+}
+.qgsm-filter:before {
+  content: "\e90b";
+}
+.qgsm-notifications:before {
+  content: "\e90c";
+}
+.qgsm-location:before {
+  content: "\e90d";
+}
+.qgsm-search:before {
+  content: "\e90e";
+}
+.qgsm-settings:before {
+  content: "\e90f";
+}
+.qgsm-time:before {
+  content: "\e910";
+}
+.qgsm-eye1:before {
+  content: "\e911";
+}
+.qgsm-Processing:before {
+  content: "\e912";
+}
+.qgsm-error:before {
+  content: "\e913";
+}
+.qgsm-email:before {
+  content: "\e914";
+}
+.qgsm-glossary:before {
+  content: "\e915";
+}
+.qgsm-logout:before {
+  content: "\e916";
+}
+.qgsm-user:before {
+  content: "\e917";
+}
+.qgsm-reports:before {
+  content: "\e918";
+}
+.qgsm-eye:before {
+  content: "\e9ce";
+}
+.qgsm-eye-blocked:before {
+  content: "\e9d1";
+}
+.qgsm-cross:before {
+  content: "\ea0f";
+}
+.qgsm-checkmark:before {
+  content: "\ea10";
+}
+
+.egsm-image:before {
+  content: "\e900";
+}
+.egsm-pdf:before {
+  content: "\e901";
+}
+.egsm-video:before {
+  content: "\e902";
+}
+.egsm-audio:before {
+  content: "\e903";
+}
+.egsm-cancel:before {
+  content: "\e904";
+}
