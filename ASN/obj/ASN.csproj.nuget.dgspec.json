@@ -59,10 +59,6 @@
               "target": "Package",
               "version": "[3.3.0, )"
             },
-            "BarcodeLib": {
-              "target": "Package",
-              "version": "[2.2.6, )"
-            },
             "InTheHand.Net.Bluetooth": {
               "target": "Package",
               "version": "[4.1.44, )"
@@ -78,10 +74,6 @@
             "MySql.Data": {
               "target": "Package",
               "version": "[9.0.0, )"
-            },
-            "MySqlClient": {
-              "target": "Package",
-              "version": "[5.5.2, )"
             },
             "QRCoder": {
               "target": "Package",
@@ -102,10 +94,6 @@
             "ZXing.Net": {
               "target": "Package",
               "version": "[0.16.10, )"
-            },
-            "Zen.Barcode.Core": {
-              "target": "Package",
-              "version": "[2.0.0, )"
             }
           },
           "imports": [

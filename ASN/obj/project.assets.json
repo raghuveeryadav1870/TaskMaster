@@ -77,18 +77,6 @@
           }
         }
       },
-      "BarcodeLib/2.2.6": {
-        "type": "package",
-        "dependencies": {
-          "System.Drawing.Common": "4.5.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/BarcodeStandard.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/BarcodeStandard.dll": {}
-        }
-      },
       "BouncyCastle.Cryptography/2.3.1": {
         "type": "package",
         "compile": {
@@ -1473,22 +1461,6 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/7.0.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets": {}
-        }
-      },
       "Microsoft.Extensions.ObjectPool/6.0.16": {
         "type": "package",
         "compile": {
@@ -2042,36 +2014,6 @@
           }
         }
       },
-      "MySqlClient/5.5.2": {
-        "type": "package",
-        "dependencies": {
-          "MySqlConnector": "2.3.5",
-          "Savage.Data": "5.5.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Savage.Data.MySqlClient.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Savage.Data.MySqlClient.dll": {}
-        }
-      },
-      "MySqlConnector/2.3.5": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
-          "System.Diagnostics.DiagnosticSource": "7.0.2"
-        },
-        "compile": {
-          "lib/net6.0/MySqlConnector.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/MySqlConnector.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "NETStandard.Library/1.6.1": {
         "type": "package",
         "dependencies": {
@@ -2241,15 +2183,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/NuGet.Versioning.dll": {}
-        }
-      },
-      "OptimizedDataReader/1.1.2": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Savage.OptimizedDataReader.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Savage.OptimizedDataReader.dll": {}
         }
       },
       "QRCoder/1.4.3": {
@@ -2488,18 +2421,6 @@
             "assetType": "native",
             "rid": "win-x86"
           }
-        }
-      },
-      "Savage.Data/5.5.2": {
-        "type": "package",
-        "dependencies": {
-          "OptimizedDataReader": "1.1.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Savage.Data.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Savage.Data.dll": {}
         }
       },
       "Std.UriTemplate/2.0.1": {
@@ -4362,15 +4283,6 @@
           }
         }
       },
-      "Zen.Barcode.Core/2.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net45/Zen.Barcode.Core.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Zen.Barcode.Core.dll": {}
-        }
-      },
       "ZstdSharp.Port/0.8.0": {
         "type": "package",
         "compile": {
@@ -4484,19 +4396,6 @@
         "lib/net6.0/Azure.Core.xml",
         "lib/netstandard2.0/Azure.Core.dll",
         "lib/netstandard2.0/Azure.Core.xml"
-      ]
-    },
-    "BarcodeLib/2.2.6": {
-      "sha512": "BkzudXISPatarIgr6yaCkGh60s/Xb4Hz8oFlXINBVKJVl8F//qtEJ3ex5Q8T29w/kr82ST/3nn5r+TIrrDkBAg==",
-      "type": "package",
-      "path": "barcodelib/2.2.6",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "barcodelib.2.2.6.nupkg.sha512",
-        "barcodelib.nuspec",
-        "lib/netstandard2.0/BarcodeStandard.dll"
       ]
     },
     "BouncyCastle.Cryptography/2.3.1": {
@@ -6168,76 +6067,6 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/7.0.1": {
-      "sha512": "pkeBFx0vqMW/A3aUVHh7MPu3WkBhaVlezhSZeb1c9XD0vUReYH1TLFSy5MxJgZfmz5LZzYoErMorlYZiwpOoNA==",
-      "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/7.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "analyzers/dotnet/roslyn3.11/cs/Microsoft.Extensions.Logging.Generators.dll",
-        "analyzers/dotnet/roslyn3.11/cs/cs/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn3.11/cs/de/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn3.11/cs/es/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn3.11/cs/fr/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn3.11/cs/it/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn3.11/cs/ja/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn3.11/cs/ko/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn3.11/cs/pl/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn3.11/cs/pt-BR/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn3.11/cs/ru/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn3.11/cs/tr/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn3.11/cs/zh-Hans/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn3.11/cs/zh-Hant/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.0/cs/Microsoft.Extensions.Logging.Generators.dll",
-        "analyzers/dotnet/roslyn4.0/cs/cs/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.0/cs/de/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.0/cs/es/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.0/cs/fr/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.0/cs/it/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.0/cs/ja/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.0/cs/ko/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.0/cs/pl/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.0/cs/pt-BR/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.0/cs/ru/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.0/cs/tr/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.0/cs/zh-Hans/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.0/cs/zh-Hant/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/Microsoft.Extensions.Logging.Generators.dll",
-        "analyzers/dotnet/roslyn4.4/cs/cs/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/de/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/es/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/fr/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/it/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/ja/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/ko/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/pl/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/pt-BR/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/ru/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/tr/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/zh-Hans/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/zh-Hant/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "buildTransitive/net461/Microsoft.Extensions.Logging.Abstractions.targets",
-        "buildTransitive/net462/Microsoft.Extensions.Logging.Abstractions.targets",
-        "buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets",
-        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Logging.Abstractions.targets",
-        "buildTransitive/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.targets",
-        "lib/net462/Microsoft.Extensions.Logging.Abstractions.dll",
-        "lib/net462/Microsoft.Extensions.Logging.Abstractions.xml",
-        "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll",
-        "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "lib/net7.0/Microsoft.Extensions.Logging.Abstractions.dll",
-        "lib/net7.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
-        "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
-        "microsoft.extensions.logging.abstractions.nuspec",
-        "useSharedDesignerContext.txt"
-      ]
-    },
     "Microsoft.Extensions.ObjectPool/6.0.16": {
       "sha512": "OVX5tlKg6LY+XKqlUn7i9KY+6Liut0iewWff2DNr7129i/NJ8rpUzbmxavPydZgcLREEWHklXZiPKCS895tNIQ==",
       "type": "package",
@@ -7382,47 +7211,6 @@
         "runtimes/win-x64/native/krbcc64.dll"
       ]
     },
-    "MySqlClient/5.5.2": {
-      "sha512": "oEoC4wijpsL258ZLZEVi+5gPwsYr3oZ5KYzr/8GYUAwF+5UqvqD8rJDAW6Vs52Hu6SaukG2eqrTXeDLwiR1mSQ==",
-      "type": "package",
-      "path": "mysqlclient/5.5.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/Savage.Data.MySqlClient.dll",
-        "mysqlclient.5.5.2.nupkg.sha512",
-        "mysqlclient.nuspec"
-      ]
-    },
-    "MySqlConnector/2.3.5": {
-      "sha512": "AmEfUPkFl+Ev6jJ8Dhns3CYHBfD12RHzGYWuLt6DfG6/af6YvOMyPz74ZPPjBYQGRJkumD2Z48Kqm8s5DJuhLA==",
-      "type": "package",
-      "path": "mysqlconnector/2.3.5",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "lib/net462/MySqlConnector.dll",
-        "lib/net462/MySqlConnector.xml",
-        "lib/net471/MySqlConnector.dll",
-        "lib/net471/MySqlConnector.xml",
-        "lib/net48/MySqlConnector.dll",
-        "lib/net48/MySqlConnector.xml",
-        "lib/net6.0/MySqlConnector.dll",
-        "lib/net6.0/MySqlConnector.xml",
-        "lib/net7.0/MySqlConnector.dll",
-        "lib/net7.0/MySqlConnector.xml",
-        "lib/net8.0/MySqlConnector.dll",
-        "lib/net8.0/MySqlConnector.xml",
-        "lib/netstandard2.0/MySqlConnector.dll",
-        "lib/netstandard2.0/MySqlConnector.xml",
-        "lib/netstandard2.1/MySqlConnector.dll",
-        "lib/netstandard2.1/MySqlConnector.xml",
-        "logo.png",
-        "mysqlconnector.2.3.5.nupkg.sha512",
-        "mysqlconnector.nuspec"
-      ]
-    },
     "NETStandard.Library/1.6.1": {
       "sha512": "WcSp3+vP+yHNgS8EV5J7pZ9IRpeDuARBPN28by8zqff1wJQXm26PVU8L3/fYLBJVU7BtDyqNVWq2KlCVvSSR4A==",
       "type": "package",
@@ -7603,20 +7391,6 @@
         "lib/netstandard2.0/NuGet.Versioning.dll",
         "nuget.versioning.6.9.1.nupkg.sha512",
         "nuget.versioning.nuspec"
-      ]
-    },
-    "OptimizedDataReader/1.1.2": {
-      "sha512": "qk3sXxpL5Ak2bMG4ei0DZOWe6X5U1lCRwGxsrD0IQ/l2hln8rXHaFyXsoDx+5owxrKKEQqLhZGT6ojQi3+bfug==",
-      "type": "package",
-      "path": "optimizeddatareader/1.1.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net45/Savage.OptimizedDataReader.dll",
-        "lib/net46/Savage.OptimizedDataReader.dll",
-        "lib/netstandard2.0/Savage.OptimizedDataReader.dll",
-        "optimizeddatareader.1.1.2.nupkg.sha512",
-        "optimizeddatareader.nuspec"
       ]
     },
     "QRCoder/1.4.3": {
@@ -7954,18 +7728,6 @@
         "runtimes/win-x86/native/sni.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
-      ]
-    },
-    "Savage.Data/5.5.2": {
-      "sha512": "K+NgD+Kjh2dkAd6hMJlqpBL8B6biq0JQx0SUljScUb8l5ydtYLXhXwROgWFqyX/bp394MfgBs3W6GmdiqDIBPg==",
-      "type": "package",
-      "path": "savage.data/5.5.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/Savage.Data.dll",
-        "savage.data.5.5.2.nupkg.sha512",
-        "savage.data.nuspec"
       ]
     },
     "Std.UriTemplate/2.0.1": {
@@ -12405,18 +12167,6 @@
         "tmds.dbus.nuspec"
       ]
     },
-    "Zen.Barcode.Core/2.0.0": {
-      "sha512": "bNhkGb4JRbVmLdX91cQ4Erd3fNYOeLYMVmgjOV0Y9uYGLh+PN21LZeOiMDIplcSed9xZjRkANd3jFP6tnIo/fg==",
-      "type": "package",
-      "path": "zen.barcode.core/2.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net45/Zen.Barcode.Core.dll",
-        "zen.barcode.core.2.0.0.nupkg.sha512",
-        "zen.barcode.core.nuspec"
-      ]
-    },
     "ZstdSharp.Port/0.8.0": {
       "sha512": "Z62eNBIu8E8YtbqlMy57tK3dV1+m2b9NhPeaYovB5exmLKvrGCqOhJTzrEUH5VyUWU6vwX3c1XHJGhW5HVs8dA==",
       "type": "package",
@@ -12528,18 +12278,15 @@
     "net6.0": [
       "AWSSDK.Core >= 3.3.0",
       "AWSSDK.S3 >= 3.3.0",
-      "BarcodeLib >= 2.2.6",
       "InTheHand.Net.Bluetooth >= 4.1.44",
       "Microsoft.Graph >= 5.68.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.17",
       "MySql.Data >= 9.0.0",
-      "MySqlClient >= 5.5.2",
       "QRCoder >= 1.4.3",
       "ReportViewerCore.NETCore >= 15.1.24",
       "System.Data.SqlClient >= 4.8.6",
       "System.Drawing.Common >= 8.0.0",
-      "ZXing.Net >= 0.16.10",
-      "Zen.Barcode.Core >= 2.0.0"
+      "ZXing.Net >= 0.16.10"
     ]
   },
   "packageFolders": {
@@ -12601,10 +12348,6 @@
             "target": "Package",
             "version": "[3.3.0, )"
           },
-          "BarcodeLib": {
-            "target": "Package",
-            "version": "[2.2.6, )"
-          },
           "InTheHand.Net.Bluetooth": {
             "target": "Package",
             "version": "[4.1.44, )"
@@ -12620,10 +12363,6 @@
           "MySql.Data": {
             "target": "Package",
             "version": "[9.0.0, )"
-          },
-          "MySqlClient": {
-            "target": "Package",
-            "version": "[5.5.2, )"
           },
           "QRCoder": {
             "target": "Package",
@@ -12644,10 +12383,6 @@
           "ZXing.Net": {
             "target": "Package",
             "version": "[0.16.10, )"
-          },
-          "Zen.Barcode.Core": {
-            "target": "Package",
-            "version": "[2.0.0, )"
           }
         },
         "imports": [
@@ -12672,17 +12407,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Zen.Barcode.Core 2.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Zen.Barcode.Core",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  }
 }
